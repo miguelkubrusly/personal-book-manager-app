@@ -35,10 +35,12 @@ function BookCreate({ onCreate }: BookCreateProps) {
   };
 
   return (
-    <div>
-      <form className="book-create" onSubmit={handleSubmit}>
+    <div className="book-create">
+      <form onSubmit={handleSubmit}>
+        <h3>Add a Book</h3>
         <label>Title</label>
-        <input onChange={handleChange} value={title} />
+        <input className="input" onChange={handleChange} value={title} />
+        <button className="button">Create</button>
       </form>
     </div>
   );
