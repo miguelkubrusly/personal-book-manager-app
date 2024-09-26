@@ -1,16 +1,16 @@
 import { useState } from "react";
 import BookCreate from "./components/BookCreate";
 
-// export interface Book {
-//   id: number;
-//   title: string;
-// }
+export interface Book {
+  id: number;
+  title: string;
+}
 
 function App() {
-  const [books, setBooks] = useState<Object[]>([]);
+  const [books, setBooks] = useState<Book[]>([]);
 
   const createBook = (title: string) => {
-    const updatedBooks = [...books, { id: books.length + 1, title }];
+    const updatedBooks: Book[] = [...books, { id: books.length + 1, title }];
     setBooks(updatedBooks);
   };
 
