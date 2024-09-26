@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { useState } from "react";
 import BookCreate from "./components/BookCreate";
 
 // export interface Book {
@@ -9,10 +7,11 @@ import BookCreate from "./components/BookCreate";
 // }
 
 function App() {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<Object[]>([]);
 
   const createBook = (title: string) => {
-    console.log("creating book with title", title);
+    const updatedBooks = [...books, { id: books.length + 1, title }];
+    setBooks(updatedBooks);
   };
 
   return (
