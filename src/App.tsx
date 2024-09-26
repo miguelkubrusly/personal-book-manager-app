@@ -1,6 +1,5 @@
 import { useState } from "react";
 import BookCreate from "./components/BookCreate";
-import crypto from "crypto-random-string";
 
 export interface Book {
   id: string;
@@ -11,7 +10,7 @@ function App() {
   const [books, setBooks] = useState<Book[]>([]);
 
   const createBook = (title: string) => {
-    const uuid: string = crypto(16);
+    const uuid = crypto.randomUUID().replace(/-/g, "").slice(0, 8);
     const updatedBooks: Book[] = [...books, { id: uuid, title }];
     setBooks(updatedBooks);
     console.log(updatedBooks);
