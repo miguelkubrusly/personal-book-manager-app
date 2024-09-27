@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Book } from "../App";
+import BookEdit from "./BookEdit";
 
 interface BookShowProps {
   book: Book;
@@ -6,15 +8,30 @@ interface BookShowProps {
 }
 
 function BookShow({ book, onDelete }: BookShowProps) {
-  const handleClick = () => {
+  const [edit, SetEdit] = useState<boolean>(false);
+
+  const editClick = () => {
+    SetEdit(!edit);
+  };
+
+  const deleteClick = () => {
     onDelete(book.id);
   };
 
+  let content: JSX.Element = <h3>{book.title}</h3>;
+
+  if (edit) {
+    content = <BookEdit book={book} />;
+  }
+
   return (
     <div className="book-show">
-      {book.title}
+      <div>{content}</div>
       <div className="actions">
-        <button className="delete" onClick={handleClick}>
+        <button className="edit" onClick={editClick}>
+          Edit
+        </button>
+        <button className="delete" onClick={deleteClick}>
           Delete
         </button>
       </div>
