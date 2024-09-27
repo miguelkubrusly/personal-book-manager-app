@@ -3,10 +3,10 @@ import { Book } from "../App";
 
 interface BookEditProps {
   book: Book;
-  onEdit: (id: string, newTitle: string) => void;
+  onSubmit: (id: string, newTitle: string) => void;
 }
 
-function BookEdit({ book, onEdit }: BookEditProps) {
+function BookEdit({ book, onSubmit }: BookEditProps) {
   const [title, setTitle] = useState(book.title);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +15,7 @@ function BookEdit({ book, onEdit }: BookEditProps) {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onEdit(book.id, title);
+    onSubmit(book.id, title);
   };
 
   const autoSelect = (event: FocusEvent<HTMLInputElement>) => {

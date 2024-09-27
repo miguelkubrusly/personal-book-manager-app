@@ -19,10 +19,15 @@ function BookShow({ book, onDelete, onEdit }: BookShowProps) {
     onDelete(book.id);
   };
 
+  const handleSubmit = (id: string, newTitle: string) => {
+    editClick();
+    onEdit(id, newTitle);
+  };
+
   let content: JSX.Element = <h3>{book.title}</h3>;
 
   if (edit) {
-    content = <BookEdit book={book} onEdit={onEdit} />;
+    content = <BookEdit book={book} onSubmit={handleSubmit} />;
   }
 
   return (
