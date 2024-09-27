@@ -14,7 +14,7 @@ function BookList({
     <BookShow key={book.id} book={book} onDelete={onDelete} onEdit={onEdit} />
   ));
 
-  return <div>{renderedBooks}</div>;
+  return <div className="book-list">{renderedBooks}</div>;
 }
 
 export default BookList;
