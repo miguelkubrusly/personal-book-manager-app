@@ -9,9 +9,7 @@ function BookList({
   onDelete: (id: string) => void;
 }) {
   const renderedBooks = books.map((book: Book) => (
-    <div>
-      <BookShow key={book.id} book={book} onDelete={onDelete} />
-    </div>
+    <BookShow key={book.id} book={book} onDelete={onDelete} />
   ));
 
   return <div>{renderedBooks}</div>;
