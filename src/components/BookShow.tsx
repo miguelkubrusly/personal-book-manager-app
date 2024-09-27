@@ -5,9 +5,10 @@ import BookEdit from "./BookEdit";
 interface BookShowProps {
   book: Book;
   onDelete: (id: string) => void;
+  onEdit: (id: string, newTitle: string) => void;
 }
 
-function BookShow({ book, onDelete }: BookShowProps) {
+function BookShow({ book, onDelete, onEdit }: BookShowProps) {
   const [edit, SetEdit] = useState<boolean>(false);
 
   const editClick = () => {
@@ -21,7 +22,7 @@ function BookShow({ book, onDelete }: BookShowProps) {
   let content: JSX.Element = <h3>{book.title}</h3>;
 
   if (edit) {
-    content = <BookEdit book={book} />;
+    content = <BookEdit book={book} onEdit={onEdit} />;
   }
 
   return (

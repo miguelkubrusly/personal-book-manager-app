@@ -1,7 +1,12 @@
 import { ChangeEvent, FormEvent, FocusEvent, useState } from "react";
 import { Book } from "../App";
 
-function BookEdit({ book }: { book: Book }) {
+interface BookEditProps {
+  book: Book;
+  onEdit: (id: string, newTitle: string) => void;
+}
+
+function BookEdit({ book, onEdit }: BookEditProps) {
   const [title, setTitle] = useState(book.title);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -10,7 +15,7 @@ function BookEdit({ book }: { book: Book }) {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("new title:", title);
+    onEdit(book.id, title);
   };
 
   const autoSelect = (event: FocusEvent<HTMLInputElement>) => {
