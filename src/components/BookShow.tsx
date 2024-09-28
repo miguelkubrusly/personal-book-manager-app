@@ -1,12 +1,6 @@
 import { useState } from "react";
-import { Book } from "../App";
+import { BookShowProps } from "../types";
 import BookEdit from "./BookEdit";
-
-interface BookShowProps {
-  book: Book;
-  onDelete: (id: string) => void;
-  onEdit: (id: string, newTitle: string) => void;
-}
 
 function BookShow({ book, onDelete, onEdit }: BookShowProps) {
   const [edit, SetEdit] = useState<boolean>(false);
@@ -16,10 +10,10 @@ function BookShow({ book, onDelete, onEdit }: BookShowProps) {
   };
 
   const deleteClick = () => {
-    onDelete(book.id);
+    onDelete(book.id!);
   };
 
-  const handleSubmit = (id: string, newTitle: string) => {
+  const handleSubmit = (id: number, newTitle: string) => {
     editClick();
     onEdit(id, newTitle);
   };

@@ -1,5 +1,5 @@
 import BookShow from "./BookShow";
-import { Book } from "../App";
+import { Book } from "../types";
 
 function BookList({
   books,
@@ -7,8 +7,8 @@ function BookList({
   onEdit,
 }: {
   books: Book[];
-  onDelete: (id: string) => void;
-  onEdit: (id: string, newTitle: string) => void;
+  onDelete: (id: number) => void;
+  onEdit: (id: number, newTitle: string) => void;
 }) {
   const renderedBooks = books.map((book: Book) => (
     <BookShow key={book.id} book={book} onDelete={onDelete} onEdit={onEdit} />

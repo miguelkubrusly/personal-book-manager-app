@@ -1,8 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from "react";
-
-export interface BookCreateProps {
-  onCreate: (title: string) => void;
-}
+import { BookCreateProps } from "../types";
 
 function BookCreate({ onCreate }: BookCreateProps) {
   const [title, setTitle] = useState("");
