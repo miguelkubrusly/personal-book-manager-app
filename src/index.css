@@ -10633,6 +10633,7 @@ a.has-text-danger-dark:hover {
   margin: auto;
   max-width: 1024px;
   padding: 20px;
+  text-align: center;
 }
 .book-create {
   background-color: #00d1b2;

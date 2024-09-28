@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
-import axios, { AxiosPromise, AxiosResponse, HttpStatusCode } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Book } from "./types";
 
 function App() {
