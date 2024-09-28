@@ -42,8 +42,8 @@ function App() {
       }
     );
     const updatedBooks: Book[] = books.map((book: Book) => {
-      if (response.data.id === id) {
-        return { ...book, title: newTitle };
+      if (book.id === id) {
+        return { ...book, ...response.data };
       } else {
         return book;
       }
