@@ -7,7 +7,7 @@ function App() {
   const { fetchData } = useContext(BooksContext);
 
   useEffect(() => {
-    fetchData();
+    fetchData!();
   }, []);
 
   return (

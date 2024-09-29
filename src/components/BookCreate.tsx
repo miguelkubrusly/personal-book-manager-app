@@ -1,8 +1,10 @@
-import { useState, ChangeEvent, FormEvent } from "react";
-import { BookCreateProps } from "../types";
+import { useState, ChangeEvent, FormEvent, useContext } from "react";
+import BooksContext from "../context/books";
 
-function BookCreate({ onCreate }: BookCreateProps) {
+function BookCreate() {
   const [title, setTitle] = useState("");
+
+  const { createBook } = useContext(BooksContext);
 
   const formatTitle = (title: string) => {
     let formattedTitle: string = "";
@@ -27,7 +29,7 @@ function BookCreate({ onCreate }: BookCreateProps) {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onCreate(formatTitle(title)!);
+    createBook!(formatTitle(title)!);
     setTitle("");
   };
 

@@ -1,10 +1,10 @@
 import axios, { AxiosResponse } from "axios";
-import { Book } from "../types";
+import { Book, BooksAndLogic } from "../types";
 import React, { createContext, useState } from "react";
 
-const BooksContext = createContext({});
+const BooksContext = createContext<BooksAndLogic>({});
 
-export function Provider({ children }: React.PropsWithChildren<{}>) {
+export function Provider({ children }: React.PropsWithChildren) {
   const [books, setBooks] = useState<Book[]>([]);
 
   const fetchData = async () => {
@@ -45,7 +45,20 @@ export function Provider({ children }: React.PropsWithChildren<{}>) {
     });
     setBooks(updatedBooks);
   };
-  return <BooksContext.Provider value={{}}>{children}</BooksContext.Provider>;
+
+  const booksAndLogic: BooksAndLogic = {
+    books,
+    fetchData,
+    createBook,
+    deleteBookById,
+    editBookById,
+  };
+
+  return (
+    <BooksContext.Provider value={booksAndLogic}>
+      {children}
+    </BooksContext.Provider>
+  );
 }
 
 export default BooksContext;

@@ -1,27 +1,30 @@
-import { useState } from "react";
-import { BookShowProps } from "../types";
+import { useContext, useState } from "react";
+import { BookProp } from "../types";
 import BookEdit from "./BookEdit";
+import BooksContext from "../context/books";
 
-function BookShow({ book, onDelete, onEdit }: BookShowProps) {
+function BookShow({ book }: BookProp) {
   const [edit, SetEdit] = useState<boolean>(false);
+
+  const { editBookById, deleteBookById } = useContext(BooksContext);
 
   const editClick = () => {
     SetEdit(!edit);
   };
 
-  const deleteClick = () => {
-    onDelete(book.id!);
+  const handleEdit = (id: number, newTitle: string) => {
+    editClick();
+    editBookById!(id, newTitle);
   };
 
-  const handleSubmit = (id: number, newTitle: string) => {
-    editClick();
-    onEdit(id, newTitle);
+  const deleteClick = () => {
+    deleteBookById!(book.id!);
   };
 
   let content: JSX.Element = <h3>{book.title}</h3>;
 
   if (edit) {
-    content = <BookEdit book={book} onSubmit={handleSubmit} />;
+    content = <BookEdit book={book} onEdit={handleEdit} />;
   }
 
   return (
