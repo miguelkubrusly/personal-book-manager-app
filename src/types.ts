@@ -18,7 +18,7 @@ export interface BooksProp {
 
 export interface BooksAndLogic {
   books?: Book[],
-  fetchData?: () => void,
+  fetchData?: () => Promise<void>,
   createBook?: (title: string) => void,
   deleteBookById?: (id: number) => void,
   editBookById?: (id: number, newTitle: string) => void

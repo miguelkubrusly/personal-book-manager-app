@@ -1,18 +1,18 @@
 import axios, { AxiosResponse } from "axios";
 import { Book, BooksAndLogic } from "../types";
-import React, { createContext, useState } from "react";
+import React, { createContext, useCallback, useState } from "react";
 
 const BooksContext = createContext<BooksAndLogic>({});
 
 export function Provider({ children }: React.PropsWithChildren) {
   const [books, setBooks] = useState<Book[]>([]);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const response: AxiosResponse = await axios.get(
       "http://localhost:3001/books"
     );
     setBooks(response.data);
-  };
+  }, []);
 
   const createBook = async (title: string) => {
     const response: AxiosResponse = await axios.post(
