@@ -8,10 +8,6 @@ export interface BookEditProps {
   onEdit: () => void;
 }
 
-// export interface BookCreateProps {
-//   onCreate: (title: string) => void;
-// }
-
 export interface BookProp {
   book: Book;
 }
@@ -26,4 +22,4 @@ export interface BooksAndLogic {
   createBook?: (title: string) => void,
   deleteBookById?: (id: number) => void,
   editBookById?: (id: number, newTitle: string) => void
-}   
+}

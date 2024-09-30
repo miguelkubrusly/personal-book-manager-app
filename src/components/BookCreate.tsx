@@ -1,10 +1,10 @@
-import { useState, ChangeEvent, FormEvent, useContext } from "react";
-import BooksContext from "../context/books";
+import { useState, ChangeEvent, FormEvent } from "react";
+import useBooksContext from "../hooks/use-books-context";
 
 function BookCreate() {
   const [title, setTitle] = useState("");
 
-  const { createBook } = useContext(BooksContext);
+  const { createBook } = useBooksContext();
 
   const formatTitle = (title: string) => {
     let formattedTitle: string = "";

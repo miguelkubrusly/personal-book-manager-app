@@ -1,17 +1,11 @@
-import {
-  ChangeEvent,
-  FormEvent,
-  FocusEvent,
-  useState,
-  useContext,
-} from "react";
+import { ChangeEvent, FormEvent, FocusEvent, useState } from "react";
 import { BookEditProps } from "../types";
-import BooksContext from "../context/books";
+import useBooksContext from "../hooks/use-books-context";
 
 function BookEdit({ book, onEdit }: BookEditProps) {
   const [title, setTitle] = useState(book.title);
 
-  const { editBookById } = useContext(BooksContext);
+  const { editBookById } = useBooksContext();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
