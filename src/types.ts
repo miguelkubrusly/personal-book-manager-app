@@ -5,7 +5,7 @@ export interface Book {
 
 export interface BookEditProps {
   book: Book;
-  onEdit: (id: number, newTitle: string) => void;
+  onEdit: () => void;
 }
 
 // export interface BookCreateProps {

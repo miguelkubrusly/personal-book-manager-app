@@ -1,8 +1,17 @@
-import { ChangeEvent, FormEvent, FocusEvent, useState } from "react";
-import { BookEditProps, BookProp } from "../types";
+import {
+  ChangeEvent,
+  FormEvent,
+  FocusEvent,
+  useState,
+  useContext,
+} from "react";
+import { BookEditProps } from "../types";
+import BooksContext from "../context/books";
 
 function BookEdit({ book, onEdit }: BookEditProps) {
   const [title, setTitle] = useState(book.title);
+
+  const { editBookById } = useContext(BooksContext);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -10,7 +19,8 @@ function BookEdit({ book, onEdit }: BookEditProps) {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onEdit(book.id!, title);
+    onEdit();
+    editBookById!(book.id!, title);
   };
 
   const autoSelect = (event: FocusEvent<HTMLInputElement>) => {

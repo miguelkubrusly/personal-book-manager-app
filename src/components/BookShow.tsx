@@ -6,15 +6,14 @@ import BooksContext from "../context/books";
 function BookShow({ book }: BookProp) {
   const [edit, SetEdit] = useState<boolean>(false);
 
-  const { editBookById, deleteBookById } = useContext(BooksContext);
+  const { deleteBookById } = useContext(BooksContext);
 
   const editClick = () => {
     SetEdit(!edit);
   };
 
-  const handleEdit = (id: number, newTitle: string) => {
-    editClick();
-    editBookById!(id, newTitle);
+  const handleEdit = () => {
+    SetEdit(false);
   };
 
   const deleteClick = () => {
